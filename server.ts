@@ -1,8 +1,10 @@
 import express, { Application, Response } from "express";
 import dotenv from "dotenv";
+const cors = require("cors");
 
 // Import routes
 import { cuotaRoutes } from "./routes/cuota_routes";
+import { wspBotRouter } from "./routes/wsp_routes";
 
 // configures dotenv to work in your application
 dotenv.config();
@@ -25,6 +27,8 @@ class Server{
 
     routes():void {
         this.app.use('/cuota', cuotaRoutes.router);
+        this.app.use('/wsp', wspBotRouter.router);
+        
     }
 
     start():void {
